@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { LatLngTuple } from 'leaflet';
 import './App.css';
 import Map from './component/Map';
 
 function App() {
+  const starter: LatLngTuple = [-33.86, 151.21]; // latitude, longitude 
+  const [defaultPosition, setDefaultPosition] = useState(starter);
   return (
     <div className="App">
       <Map
-        latitude={-33.86}
-        longitude={151.21}
+        position={defaultPosition}
         marker={true}
         popupText="Sydney Yay!!"
       />

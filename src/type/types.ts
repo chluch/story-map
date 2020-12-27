@@ -1,11 +1,10 @@
 import { LatLngTuple } from 'leaflet';
 
-export interface GenericMapProps {
-  latitude: number;
-  longitude: number;
+export interface MapProps {
+  position: LatLngTuple;
 }
 
-export interface InteractiveMapProps extends GenericMapProps {
+export interface InteractiveMapProps extends MapProps {
   marker: boolean;
   popupText?: string;
 }

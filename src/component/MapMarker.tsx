@@ -4,7 +4,6 @@ import { MarkerProps } from '../type/types';
 
 const MapMarker = ({ position, popupText }: MarkerProps) => {
   const map = useMap();
-
   const centreMap = (e: any) => {
     map.setView(e.latlng, map.getZoom(), {
       animate: false,

@@ -1,11 +1,9 @@
 import React from 'react';
-import { LatLngTuple } from 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet'
 import { InteractiveMapProps } from '../type/types';
 import MapMarker from './MapMarker';
 
-const Map = ({ latitude, longitude, marker, popupText }: InteractiveMapProps) => {
-  const position: LatLngTuple = [latitude, longitude];
+const Map = ({ position, marker, popupText }: InteractiveMapProps) => {
   return (
     <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
       <TileLayer
