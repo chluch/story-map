@@ -1,16 +1,17 @@
 import React from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet'
-import { InteractiveMapProps } from '../type/types';
+import { MapProps } from '../type/types';
 import MapMarker from './MapMarker';
 
-const Map = ({ position, marker, markersInfo }: InteractiveMapProps) => {
+const Map = ({ centre, showMarkers, markersInfo }: MapProps) => {
+
   return (
-    <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+    <MapContainer center={centre} zoom={13} scrollWheelZoom={false} >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {marker
+      {showMarkers
         ?
         <>
           {markersInfo.places.map((p, i) =>

@@ -1,7 +1,9 @@
 import { LatLngExpression, LatLngTuple } from 'leaflet';
 
 export interface MapProps {
-  position: LatLngExpression;
+  centre: LatLngExpression;
+  showMarkers: boolean;
+  markersInfo: MarkersInfo;
 }
 
 export interface MarkerInfo {
@@ -12,11 +14,6 @@ export interface MarkerInfo {
 
 export interface MarkersInfo {
   places: MarkerInfo[];
-}
-
-export interface InteractiveMapProps extends MapProps {
-  marker: boolean;
-  markersInfo: MarkersInfo;
 }
 
 export interface MarkerProps {
