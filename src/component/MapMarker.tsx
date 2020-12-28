@@ -1,10 +1,11 @@
 import React from 'react';
+import { LeafletMouseEvent, Map } from 'leaflet';
 import { Marker, Popup, useMap } from 'react-leaflet'
 import { MarkerProps } from '../type/types';
 
 const MapMarker = ({ position, title, popupText }: MarkerProps) => {
-  const map = useMap();
-  const centreMap = (e: any) => {
+  const map: Map = useMap();
+  const centreMap = (e: LeafletMouseEvent): void => {
     map.setView(e.latlng, map.getZoom(), {
       animate: false,
     });
