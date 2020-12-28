@@ -25,11 +25,16 @@ function App() {
   }
   return (
     <div className="App">
-      <Map
-        position={defaultPosition}
-        marker={true}
-        markersInfo={markersInfo}
-      />
+      <main>
+        <Map
+          position={defaultPosition}
+          marker={true}
+          markersInfo={markersInfo}
+        />
+      </main>
+      <footer>
+        <h1 id="page-title">Story Map</h1>
+      </footer>
     </div>
   );
 }

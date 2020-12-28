@@ -1,6 +1,67 @@
-.leaflet-container {
-  width: 700px;
-  height: 400px;
-  margin: 0 auto;
-  border: 1px solid black;
+html {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  color: #000;
 }
+
+#root {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.App {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  height: calc(100% - 75px);
+}
+
+footer {
+  z-index: 1000;
+  box-sizing: border-box;
+  padding: 10px;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  background-color: black;
+}
+
+#page-title {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: normal;
+  font-size: 48px;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* .leaflet-popup-content-wrapper {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.leaflet-popup-content {
+  padding: 5px 10px;
+}
+
+.leaflet-popup-content p, h1 {
+  margin: 0;
+}
+
+.place-description {
+  font-size: 16px;
+} */
