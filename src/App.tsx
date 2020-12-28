@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { LatLngTuple } from 'leaflet';
+import { LatLngBounds, latLngBounds, LatLngTuple, Map as LeafletMap } from 'leaflet';
 import './App.css';
 import { MarkersInfo } from './type/types';
 import Map from './component/Map';
 
-function App() {
+const App = () => {
   const starter: LatLngTuple = [-33.86, 151.21]; // latitude, longitude 
-  const [centre, setCentre] = useState(starter);
+  const [centre, setCentre] = useState<LatLngTuple>(starter);
+  const [map, setMap] = useState<LeafletMap|null>(null);
 
-  const glebe: LatLngTuple = [-33.878, 151.186]; // test example
+  // Test example
   const markersInfo: MarkersInfo = {
     places: [
       {
-        position: glebe,
+        position: [-33.878, 151.186],
         title: "Glebe",
         description: "Coffee here!",
       },
@@ -31,7 +32,19 @@ function App() {
         title: "Coogee",
         description: "Beach day!",
       },
+      {
+        position: [-33.517, 150.367],
+        title: "Mt Wilson, Blue Mountains",
+        description: "Let's hike!",
+      },
     ],
+  }
+  const bounds: LatLngBounds = latLngBounds(markersInfo.places.map((p) => p.position));
+  const handleZoom: () => void = () => {
+    map && map.fitBounds(bounds);
+  }
+  const handleCentre: () => void = () => {
+    map && map.flyTo(centre, 13); // latlng, zoom
   }
 
   return (
@@ -41,10 +54,15 @@ function App() {
           centre={centre}
           showMarkers={true}
           markersInfo={markersInfo}
+          setMap={setMap}
         />
       </main>
       <footer>
         <h1 id="page-title">Story Map</h1>
+        <div className="map-actions">
+          <button onClick={handleZoom}>Zoom</button>
+          <button onClick={handleCentre}>Centre</button>
+        </div>
       </footer>
     </div>
   );

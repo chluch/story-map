@@ -1,9 +1,10 @@
-import { LatLngExpression, LatLngTuple } from 'leaflet';
+import { LatLngExpression, LatLngTuple, Map } from 'leaflet';
 
 export interface MapProps {
   centre: LatLngExpression;
   showMarkers: boolean;
   markersInfo: MarkersInfo;
+  setMap: React.Dispatch<React.SetStateAction<Map | null>>;
 }
 
 export interface MarkerInfo {

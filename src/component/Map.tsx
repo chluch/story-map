@@ -3,10 +3,9 @@ import { MapContainer, TileLayer } from 'react-leaflet'
 import { MapProps } from '../type/types';
 import MapMarker from './MapMarker';
 
-const Map = ({ centre, showMarkers, markersInfo }: MapProps) => {
-
+const Map = ({ centre, showMarkers, markersInfo, setMap }: MapProps) => {
   return (
-    <MapContainer center={centre} zoom={13} scrollWheelZoom={false} >
+    <MapContainer center={centre} zoom={13} scrollWheelZoom={false} whenCreated={setMap}>
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
