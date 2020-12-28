@@ -3,7 +3,7 @@ import { MapContainer, TileLayer } from 'react-leaflet'
 import { InteractiveMapProps } from '../type/types';
 import MapMarker from './MapMarker';
 
-const Map = ({ position, marker, popupText }: InteractiveMapProps) => {
+const Map = ({ position, marker, markersInfo }: InteractiveMapProps) => {
   return (
     <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
       <TileLayer
@@ -12,10 +12,16 @@ const Map = ({ position, marker, popupText }: InteractiveMapProps) => {
       />
       {marker
         ?
-        <MapMarker
-          position={position}
-          popupText={popupText}
-        />
+        <>
+          {markersInfo.places.map((p, i) =>
+            <MapMarker
+              key={`${i}-${p.position}`}
+              position={p.position}
+              title={p.title}
+              popupText={p.description}
+            />
+          )}
+        </>
         : null
       }
     </MapContainer>

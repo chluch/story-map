@@ -2,7 +2,7 @@ import React from 'react';
 import { Marker, Popup, useMap } from 'react-leaflet'
 import { MarkerProps } from '../type/types';
 
-const MapMarker = ({ position, popupText }: MarkerProps) => {
+const MapMarker = ({ position, title, popupText }: MarkerProps) => {
   const map = useMap();
   const centreMap = (e: any) => {
     map.setView(e.latlng, map.getZoom(), {
@@ -18,7 +18,8 @@ const MapMarker = ({ position, popupText }: MarkerProps) => {
       }}
     >
       <Popup>
-        {popupText}
+        <h1>{title}</h1>
+        <p className="place-description">{popupText}</p>
       </Popup>
     </Marker>
   );
