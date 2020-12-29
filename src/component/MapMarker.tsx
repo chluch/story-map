@@ -19,7 +19,7 @@ const MapMarker = ({ position, properties }: MarkerProps) => {
       }}
     >
       <Popup>
-        <h1>{properties.title}</h1>
+        <h1>{properties.name}</h1>
         <p className="place-description">{properties.description}</p>
       </Popup>
     </Marker>
