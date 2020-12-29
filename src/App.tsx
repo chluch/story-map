@@ -1,45 +1,30 @@
 import React, { useState } from 'react';
 import { LatLngBounds, latLngBounds, LatLngTuple, Map as LeafletMap } from 'leaflet';
+import { Feature, FeatureCollection, Point } from 'geojson';
 import './App.css';
-import { MarkersInfo } from './type/types';
 import Map from './component/Map';
+import switchCoords from './util/switchCoords';
+const GeoJSON = require('geojson');
+
 
 const App = () => {
   const starter: LatLngTuple = [-33.86, 151.21]; // latitude, longitude 
   const [centre, setCentre] = useState<LatLngTuple>(starter);
-  const [map, setMap] = useState<LeafletMap|null>(null);
+  const [map, setMap] = useState<LeafletMap | null>(null);
 
-  // Test example
-  const markersInfo: MarkersInfo = {
-    places: [
-      {
-        position: [-33.878, 151.186],
-        title: "Glebe",
-        description: "Coffee here!",
-      },
-      {
-        position: [-33.86, 151.21],
-        title: "Sydney",
-        description: "Yay Sydney!",
-      },
-      {
-        position: [-33.896, 151.227],
-        title: "Centennial Park",
-        description: "Picnic!",
-      },
-      {
-        position: [-33.920, 151.258],
-        title: "Coogee",
-        description: "Beach day!",
-      },
-      {
-        position: [-33.517, 150.367],
-        title: "Mt Wilson, Blue Mountains",
-        description: "Let's hike!",
-      },
-    ],
-  }
-  const bounds: LatLngBounds = latLngBounds(markersInfo.places.map((p) => p.position));
+  const example = [
+    { name: "Glebe", description: "Coffee here!", category: "Personal", lat: -33.878, lng: 151.186 },
+    { name: "Sydney", description: "Hello Sydney!", category: "Personal", lat: -33.86, lng: 151.21 },
+    { name: "Centennial Park", description: "Picnic!", category: "Travel", lat: -33.896, lng: 151.227 },
+    { name: "Coogee", description: "Beach day!", category: "Travel", lat: -33.920, lng: 151.258 },
+    { name: "Mt Wilson, Blue Mountains", category: "Travel", description: "Let's hike!", lat: -33.517, lng: 150.367 },
+  ];
+  const exampleData: FeatureCollection<Point> = GeoJSON.parse(example, { Point: ['lat', 'lng'] });
+
+
+  const bounds: LatLngBounds = latLngBounds(exampleData.features
+      .map((location: Feature<Point>) => switchCoords(location.geometry.coordinates)));
+ 
   const handleZoom: () => void = () => {
     map && map.fitBounds(bounds);
   }
@@ -53,7 +38,7 @@ const App = () => {
         <Map
           centre={centre}
           showMarkers={true}
-          markersInfo={markersInfo}
+          geoJson={exampleData}
           setMap={setMap}
         />
       </main>

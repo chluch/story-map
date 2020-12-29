@@ -1,26 +1,17 @@
-import { LatLngExpression, LatLngTuple, Map } from 'leaflet';
+import { FeatureCollection, Point } from 'geojson';
+import { LatLngExpression, Map } from 'leaflet';
 
 export interface MapProps {
   centre: LatLngExpression;
   showMarkers: boolean;
-  markersInfo: MarkersInfo;
+  geoJson: FeatureCollection<Point>;
+  // markersInfo: MarkersInfo;
   setMap: React.Dispatch<React.SetStateAction<Map | null>>;
-}
-
-export interface MarkerInfo {
-  position: LatLngTuple;
-  title?: string;
-  description?: string;
-}
-
-export interface MarkersInfo {
-  places: MarkerInfo[];
 }
 
 export interface MarkerProps {
   position: LatLngExpression;
-  title?: string;
-  popupText?: string;
+  properties: any;
 }
 
 export interface ModalProps {
