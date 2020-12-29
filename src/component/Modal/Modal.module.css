@@ -1,0 +1,90 @@
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modalBackdrop.fadeIn {
+  opacity: 1;
+  transition: all linear 0.4s;
+}
+
+.modalBackdrop.fadeOut {
+  z-index: 0;
+  opacity: 0;
+  transition: all linear 0.4s;
+}
+
+.modalMain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  width: 100%;
+  height: calc(100% - 75px);
+  outline: 0;
+  overflow-y: scroll;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  background: white;
+  position: relative;
+  margin: 10px auto;
+  border-radius: 3px;
+  max-width: 400px;
+  min-height: 300px;
+  height: 500px;
+  max-height: 500px;
+  overflow: scroll;
+  overflow-wrap: break-word;
+  box-shadow: 5px 5px;
+}
+
+.modal.open {
+  bottom: 0;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0, 1);
+}
+
+.modal.close {
+  bottom: -1000vh;
+  transition: all 0.5s cubic-bezier(1, 0, 0, 0.4);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modalHeader >h1 {
+  margin: 20px 20px 0 20px;
+}
+
+.modalCloseBtn {
+  font-size: 28px;
+  font-weight: bold;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  color: rgba(0,0,0,0.6);
+  border: none;
+  background-color: inherit;
+  margin: 5px 15px;
+}
+
+.modalCloseBtn:hover {
+  color: black;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.modalBody {
+  margin: 0 20px;
+}

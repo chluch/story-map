@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { LatLngBounds, latLngBounds, LatLngTuple, Map as LeafletMap } from 'leaflet';
 import { Feature, FeatureCollection, Point } from 'geojson';
 import './App.css';
-import Map from './component/Map';
-import Modal from './component/Modal';
 import switchCoords from './util/switchCoords';
 import useModal from './util/useModal';
+import Map from './component/Map';
+import Modal from './component/Modal/Modal';
 
 const GeoJSON = require('geojson');
 
@@ -47,11 +47,11 @@ const App = () => {
         />
       </main>
       <footer>
-        <h1 id="page-title">Story Map</h1>
+        <h1 className="page-title">Story Map</h1>
         <div className="map-actions">
-          <button onClick={handleZoom}>Zoom</button>
-          <button onClick={handleCentre}>Centre</button>
-          <button onClick={toggleModal}>Modal</button>
+          <button className="action-button" type="button" onClick={handleZoom}>Fit Markers</button>
+          <button className="action-button" type="button" onClick={handleCentre}>Centre</button>
+          <button className="action-button" type="button" onClick={toggleModal}>Modal</button>
           <Modal
             show={showModal}
             hide={toggleModal}
