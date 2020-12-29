@@ -3,7 +3,10 @@ import { LatLngBounds, latLngBounds, LatLngTuple, Map as LeafletMap } from 'leaf
 import { Feature, FeatureCollection, Point } from 'geojson';
 import './App.css';
 import Map from './component/Map';
+import Modal from './component/Modal';
 import switchCoords from './util/switchCoords';
+import useModal from './util/useModal';
+
 const GeoJSON = require('geojson');
 
 
@@ -11,6 +14,7 @@ const App = () => {
   const starter: LatLngTuple = [-33.86, 151.21]; // latitude, longitude 
   const [centre, setCentre] = useState<LatLngTuple>(starter);
   const [map, setMap] = useState<LeafletMap | null>(null);
+  const { showModal, toggleModal } = useModal();
 
   const example = [
     { name: "Glebe", description: "Coffee here!", category: "Personal", lat: -33.878, lng: 151.186 },
@@ -23,8 +27,8 @@ const App = () => {
 
 
   const bounds: LatLngBounds = latLngBounds(exampleData.features
-      .map((location: Feature<Point>) => switchCoords(location.geometry.coordinates)));
- 
+    .map((location: Feature<Point>) => switchCoords(location.geometry.coordinates)));
+
   const handleZoom: () => void = () => {
     map && map.fitBounds(bounds);
   }
@@ -47,6 +51,11 @@ const App = () => {
         <div className="map-actions">
           <button onClick={handleZoom}>Zoom</button>
           <button onClick={handleCentre}>Centre</button>
+          <button onClick={toggleModal}>Modal</button>
+          <Modal
+            show={showModal}
+            hide={toggleModal}
+          />
         </div>
       </footer>
     </div>
