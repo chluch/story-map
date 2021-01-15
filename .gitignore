@@ -23,3 +23,41 @@ yarn-debug.log*
 yarn-error.log*
 
 .eslintcache
+
+# Backend directory
+# compiled output
+nest-backend/dist
+nest-backend/node_modules
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+
+# Tests
+nest-backend/coverage
+nest-backend/.nyc_output
+
+# IDEs and editors
+nest-backend/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+nest-backend/src/auth/constants.ts
