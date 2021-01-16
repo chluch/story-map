@@ -5,8 +5,10 @@ import {
   Param,
   Post,
   Request,
+  Res,
   UseGuards,
 } from '@nestjs/common';
+import { Response } from 'express';
 import { AppService } from './app.service';
 import {
   GetUserResponse,
@@ -37,8 +39,14 @@ export class AppController {
 
   @UseGuards(LocalAuthGuard)
   @Post('/login')
-  async login(@Request() req) {
-    return this.authService.login(req.user);
+  async login(@Request() req, @Res({ passthrough: true }) response: Response) {
+    const jwt = await this.authService.login(req.user);
+    response.cookie('auth', jwt.access_token, {
+      expires: new Date(Date.now() + 3600),
+      secure: true,
+      httpOnly: true,
+      sameSite: 'lax',
+    });
   }
 
   @UseGuards(JwtAuthGuard)
