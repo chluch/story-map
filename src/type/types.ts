@@ -16,5 +16,11 @@ export interface MarkerProps {
 
 export interface ModalProps {
   show: boolean;
-  hide: any;
+  hide: () => void;
+}
+
+export interface FlipCardProps {
+  front: React.ReactNode;
+  back: React.ReactNode;
+  options: number;
 }
