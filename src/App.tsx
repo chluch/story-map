@@ -1,12 +1,12 @@
 import React from 'react';
-import Login from './pages/Login';
+import LandingPage from './pages/LandingPage';
 import Main from './pages/Main';
 
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <Login />
+      <LandingPage />
      {/* <Main /> */}
     </div>
   );

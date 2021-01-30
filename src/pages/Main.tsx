@@ -12,7 +12,7 @@ const GeoJSON = require('geojson');
 
 // TODO: Fix map dragging
 
-const Main = () => {
+const Main: React.FC = () => {
   const starter: LatLngTuple = [-33.86, 151.21]; // latitude, longitude 
   const [centre, setCentre] = useState<LatLngTuple>(starter);
   const [map, setMap] = useState<LeafletMap | null>(null);
