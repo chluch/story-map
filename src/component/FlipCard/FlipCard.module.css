@@ -1,0 +1,47 @@
+.card {
+  perspective: 1500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 450px;
+  height: 500px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: none;
+  color: black;
+}
+
+.front, .back {
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform ease-in 600ms;
+}
+
+.front {
+  background-color: greenyellow;
+}
+
+.back {
+  background-color: coral;
+}
+
+.front.flipped {
+  transform: rotateY(0deg);
+}
+
+.front.unflipped {
+  transform: rotateY(180deg);
+}
+
+.back.flipped {
+  transform: rotateY(0deg);
+}
+
+.back.unflipped {
+  transform: rotateY(-180deg);
+}
