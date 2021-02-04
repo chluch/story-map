@@ -1,4 +1,9 @@
 .wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: inherit;
   padding: 10px;
 }
 
@@ -8,61 +13,77 @@
   text-align: center;
 }
 
-.loginForm {
-  /* display: flex;
-  flex-direction: column; */
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-.loginForm >div {
+form>div {
   position: relative;
   overflow: hidden;
+  margin: 20px;
 }
 
-.input {
+input {
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
+  border: 1px solid black; 
+  background: none;
   position: relative;
-  border: 2px solid black;
-  padding: 8px 12px;
-  margin: 20px 0;
-  outline: 0;
+  top: 0;
+  left: 0;
   z-index: 1;
-  /* top: 0;
-  left: 0; */
-  background-color: none;
+  outline: 0;
 }
 
-.input:valid {
+input:valid {
   background-color: white;
 }
 
+input:focus {
+  border-color: #1338be;
+}
+
+input:focus+label {
+  background: #1338be;
+  color: white;
+  font-size: 70%;
+  padding: 1px 6px;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  transition: background 0.2s, color 0.2s, top 0.2s, bottom 0.2s, right 0.2s, left 0.2s;
+  position: absolute;
+  color: black;
+  padding: 7px 6px;
+}
+
+label:hover {
+  cursor: text;
+}
+
+.input {
+  padding: 20px; 
+}
+
+.label {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
 .input:focus {
-  border-color: black;
-  padding: 4px 6px 20px 6px; 
+  padding: 20px;
+  /* padding: 4px 6px 20px 6px;  */
 }
 
 .input:focus+.label {
-  box-sizing: border-box;
-  background-color: black;
-  border-color: black;
-  color: white;
-  z-index: 2;
-  text-transform: uppercase;
-  font-size: 70%;
-  padding: 1px 6px;
   top: 100%;
   margin-top: -16px;
 }
 
-.label {
-  box-sizing: border-box;
-  width: 100%;
-  top: 0px;
-  bottom: 0px;
-  left: 0;
-  transition: background 0.2s, color 0.2s, top 0.2s, bottom 0.2s, right 0.2s, left 0.2s;
-  position: absolute;
-  color: black;
-  padding: 0px;
-}

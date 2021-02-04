@@ -7,11 +7,11 @@ const Login: React.FC = () => {
       <h1 className={styles.heading}>Login</h1>
       <form className={styles.loginForm}>
         <div>
-          <input className={styles.input} type="text" name="username" />
+          <input className={styles.input} type="text" name="username" required/>
           <label htmlFor="username" className={styles.label}>Username</label>
         </div>
         <div>
-          <input className={styles.input} type="password" name="password" />
+          <input className={styles.input} type="password" name="password" required/>
           <label htmlFor="password" className={styles.label}>Password</label>
         </div>
       </form>
