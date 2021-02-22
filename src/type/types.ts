@@ -24,3 +24,8 @@ export interface FlipCardProps {
   back: React.ReactNode;
   options: number;
 }
+
+export interface LoginInput {
+  username: string;
+  password: string;
+}

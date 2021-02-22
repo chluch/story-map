@@ -5,6 +5,7 @@
   background-color: white;
   border-radius: inherit;
   padding: 10px;
+  font-size: 14px;
 }
 
 .heading {
@@ -79,7 +80,6 @@ label:hover {
 
 .input:focus {
   padding: 20px;
-  /* padding: 4px 6px 20px 6px;  */
 }
 
 .input:focus+.label {
@@ -87,3 +87,18 @@ label:hover {
   margin-top: -16px;
 }
 
+.errorMessage {
+  margin: -20px 20px 0 20px;
+  color: #1338be;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.submit {
+  border: none;
+  color: white;
+  background-color: black;
+  margin: 50px 20px;
+  padding: 20px;
+  font-size: 14px;
+}
